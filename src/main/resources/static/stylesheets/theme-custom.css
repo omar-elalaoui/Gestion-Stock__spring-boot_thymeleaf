@@ -1,0 +1,61 @@
+/* Add here all your CSS customizations */
+.nav-active{
+    background: #191c21;
+}
+.sidebar-title{
+    font-weight: bold;
+    color: #abb4be !important;
+}
+.userbox.s{
+    margin-top: 7px !important;
+}
+.userbox.s .name{
+    font-weight: 700;
+    color: aliceblue;
+}
+.userbox .profile-info.s{
+    margin-left: 5px;
+}
+.handC{
+    cursor: pointer;
+}
+
+/***** tables *****/
+table i{
+    cursor: pointer;
+    font-size: 15px;
+}
+table thead{
+    background-color: #ecedf0;
+}
+
+/***** Modal *****/
+.modal-body{
+    padding: 0px !important;
+}
+
+.modal-body .panel-body form{
+    margin-bottom: 0 !important;
+}
+/***** Spacing *****/
+.om-tab{
+    padding-left: 1em;
+    padding-right: 1em;
+}
+.om-tab2{
+    padding-left: 6em;
+    color: #777;
+    font-size: 17px;
+}
+.om-mb{
+    margin-bottom: 8px !important;
+}
+
+
+/******Panels******/
+.om-panel-s .panel-heading{
+    padding: 13px;
+}
+.om-panel-s .panel-title{
+    font-size: 18px;
+}

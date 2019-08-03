@@ -1,0 +1,243 @@
+<!doctype html>
+<html class="fixed" lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layouts/default">
+
+<body>
+
+    <div id="page" layout:fragment="content">
+        <section role="main" class="content-body">
+            <header class="page-header">
+                <h2>Commandes de vente</h2>
+
+            </header>
+
+            <!-- start: page -->
+
+
+
+
+            <!-- Modal Animation -->
+            <div id="ajouter" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <section class="panel panel-primary">
+                                <header class="panel-heading">
+                                    <h2 class="panel-title">Ajouter une lignes de commande</h2>
+                                </header>
+                                <div class="panel-body">
+
+                                    <form id="demo-form" class="form-horizontal mb-lg" novalidate="novalidate">
+                                        <div class="form-group mt-lg">
+                                            <label class="col-sm-3 control-label">Produit</label>
+                                            <div class="col-sm-8">
+                                                <select class="form-control">
+                                                    <option>Option 1</option>
+                                                    <option>Option 2</option>
+                                                    <option>Option 3</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mt-lg">
+                                            <label class="col-sm-3 control-label">Reste</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" name="name" class="form-control" readonlyf>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mt-lg">
+                                            <label class="col-sm-3 control-label">Quantite</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" name="name" class="form-control" required="">
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </section>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary modal-confirm">Ajouter</button>
+                            <button class="btn btn-default" data-dismiss="modal">Annuler</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <!-- <div id="ajouter" class="zoom-anim-dialog modal-header-color modal-block modal-block-info mfp-hide">
+                  <section class="panel">
+                      <header class="panel-heading">
+                          <h2 class="panel-title">Ajouter une lignes de commande</h2>
+                      </header>
+                      
+                      <footer class="panel-footer">
+                          <div class="row">
+                              <div class="col-md-12 text-right">
+                                  <button class="btn btn-primary modal-confirm">Ajouter</button>
+                                  <button class="btn btn-default modal-dismiss">Annuler</button>
+                              </div>
+                          </div>
+                      </footer>
+                  </section>
+              </div> -->
+            <!-- End Modal-->
+
+            <!-- Nouvelle Commande-->
+            <section class="panel panel-featured panel-featured-warning om-panel-s">
+                <header class="panel-heading">
+                    <div class="panel-actions">
+                        <a class="fa fa-caret-down"></a>
+                    </div>
+
+                    <h2 class="panel-title">Nouvelle commande de vente</h2>
+                </header>
+                <div class="panel-body">
+
+                    <form id="demo-form" class="form-horizontal mb-lg" novalidate="novalidate">
+                        <div class="form-group mt-lg">
+                            <label class="col-sm-2 col-md-1 control-label">Client</label>
+                            <div class="col-sm-8 col-md-6">
+                                <select class="form-control">
+                                    <option>Option 1</option>
+                                    <option>Option 2</option>
+                                    <option>Option 3</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group mt-lg">
+                            <label class="col-sm-2 col-md-1 control-label">Date</label>
+                            <div class="col-sm-4 col-md-2">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fas fa-calendar-alt"></i>
+                                    </span>
+                                    <input type="text" data-plugin-datepicker="" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <section class="panel panel-featured panel-featured-warning om-panel-s">
+                        <header class="panel-heading">
+                            <div class="panel-actions">
+                                <a href="#" class="fa fa-caret-down"></a>
+                            </div>
+
+                            <h2 class="panel-title text-warning">Lignes de commande</h2>
+                        </header>
+                        <div class="panel-body">
+                            <a class="btn btn-warning om-mb btn-xs " data-toggle="modal" data-target="#ajouter"><i class="fas fa-plus-circle"></i> Nouvelle Ligne</a>
+                            <table class="table table-bordered table-striped mb-none">
+                                <thead>
+                                    <tr>
+                                        <th>Code</th>
+                                        <th>Designation</th>
+                                        <th>Image</th>
+                                        <th class="hidden-phone">Qte</th>
+                                        <th class="hidden-phone">Prix Vente</th>
+                                        <th class="hidden-phone">Montant</th>
+                                        <th class="center hidden-phone">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="gradeX">
+                                        <td>1</td>
+                                        <td>Toshiba 750</td>
+                                        <td></td>
+                                        <td>50</td>
+                                        <td>30</td>
+                                        <td>35000</td>
+                                        <td class="center hidden-phone">
+                                            <i class="fas fa-edit text-primary"></i>
+                                            <span class="om-tab">/</span>
+                                            <i class="fas fa-trash-alt text-danger"></i></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                    <a class="btn btn-success"><i class="fas fa-check"></i> Valider la commande</a>&nbsp;
+                    <a class="btn btn-dark" routerLink="/sorties"><i class="fas fa-times"></i> Annuler</a>
+                </div>
+            </section>
+            <!-- End Nouvelle Commande-->
+
+
+            <!-- Table-->
+            <section class="panel">
+                <div class="panel-body">
+                    <a class="btn btn-warning" routerLink="nouvelle-commande"><i class="fas fa-plus-circle"></i> Nouvelle Commande</a>
+                    <hr>
+                    <table #dataTable class="table table-bordered table-striped mb-none" id="datatable-default">
+                        <thead>
+                            <tr>
+                                <th>ID Client</th>
+                                <th>Client</th>
+                                <th>Date Commande</th>
+                                <th>Montant</th>
+                                <th class="center hidden-phone">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="gradeX">
+                                <td>1</td>
+                                <td>Mohamed Ali</td>
+                                <td>25/06/2019</td>
+                                <td>80000</td>
+                                <td class="center hidden-phone">
+                                    <i class="fas fa-edit text-primary"></i>
+                                    <span class="om-tab">/</span>
+                                    <i class="fas fa-trash-alt text-danger"></i></td>
+                            </tr>
+                            <tr class="gradeX">
+                                <td>2</td>
+                                <td>Omar El Alaoui</td>
+                                <td>25/05/2019</td>
+                                <td>25000</td>
+                                <td class="center hidden-phone">
+                                    <i class="fas fa-edit text-primary"></i>
+                                    <span class="om-tab">/</span>
+                                    <i class="fas fa-trash-alt text-danger"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+
+            <!-- end: page -->
+        </section>
+    </div>
+
+
+    <!-- Vendor -->
+    <script src="assets/vendor/jquery/jquery.js"></script>
+    <script src="assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.js"></script>
+    <script src="assets/vendor/nanoscroller/nanoscroller.js"></script>
+    <script src="assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="assets/vendor/jquery-placeholder/jquery.placeholder.js"></script>
+
+    <!-- Specific Page Vendor -->
+    <script src="assets/vendor/select2/select2.js"></script>
+    <script src="assets/vendor/jquery-datatables/media/js/jquery.dataTables.js"></script>
+    <script src="assets/vendor/jquery-datatables-bs3/assets/js/datatables.js"></script>
+    <script src="assets/vendor/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
+
+    <!-- Theme Base, Components and Settings -->
+    <script src="assets/javascripts/theme.js"></script>
+
+    <!-- Theme Custom -->
+    <script src="assets/javascripts/theme.custom.js"></script>
+
+    <!-- Theme Initialization Files -->
+    <script src="assets/javascripts/theme.init.js"></script>
+
+    <!-- Examples -->
+    <script src="assets/javascripts/tables/examples.datatables.default.js"></script>
+    <script src="assets/javascripts/tables/examples.datatables.row.with.details.js"></script>
+    <script src="assets/javascripts/tables/examples.datatables.tabletools.js"></script>
+    <script src="assets/javascripts/ui-elements/examples.modals.js"></script>
+
+</body>
+
+</html>

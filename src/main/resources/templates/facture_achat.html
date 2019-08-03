@@ -1,0 +1,99 @@
+<!doctype html>
+<html class="fixed" lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layouts/default">
+
+<body>
+
+    <div id="page" layout:fragment="content">
+        <section role="main" class="content-body">
+            <header class="page-header">
+                <h2>Facture d'Achat</h2>
+            </header>
+
+            <!-- start: page -->
+
+
+
+
+            <section class="panel panel panel-featured panel-featured-primary om-panel-s">
+                <header class="panel-heading">
+                    <div class="panel-actions">
+                        <a href="#" class="fa fa-caret-down"></a>
+                    </div>
+                    <h2 class="panel-title">Montant Globale : <span>5000</span></h2>
+                </header>
+                <div class="panel-body">
+                    <table class="table table-bordered table-striped mb-none" id="datatable-default">
+                        <thead>
+                            <tr>
+                                <th>ID Facture</th>
+                                <th>Fournisseur</th>
+                                <th>Date</th>
+                                <th>Montant Total</th>
+                                <th class="center hidden-phone">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="gradeX">
+                                <td>2</td>
+                                <td>Mohamed Ali</td>
+                                <td>26/02/2019</td>
+                                <td>4000</td>
+                                <td class="center hidden-phone">
+                                    <i class="far fa-file-pdf text-primary"></i>
+                                    <span class="om-tab">/</span>
+                                    <i class="fas fa-trash-alt text-danger"></i></td>
+                            </tr>
+                            <tr class="gradeX">
+                                <td>2</td>
+                                <td>Omar El Alaoui</td>
+                                <td>26/02/2019</td>
+                                <td>8000</td>
+                                <td class="center hidden-phone">
+                                    <i class="far fa-file-pdf text-primary"></i>
+                                    <span class="om-tab">/</span>
+                                    <i class="fas fa-trash-alt text-danger"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- end: page -->
+        </section>
+    </div>
+
+
+
+    <!-- Vendor -->
+    <script src="assets/vendor/jquery/jquery.js"></script>
+    <script src="assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.js"></script>
+    <script src="assets/vendor/nanoscroller/nanoscroller.js"></script>
+    <script src="assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="assets/vendor/magnific-popup/magnific-popup.js"></script>
+    <script src="assets/vendor/jquery-placeholder/jquery.placeholder.js"></script>
+
+    <!-- Specific Page Vendor -->
+    <script src="assets/vendor/select2/select2.js"></script>
+    <script src="assets/vendor/jquery-datatables/media/js/jquery.dataTables.js"></script>
+    <script src="assets/vendor/jquery-datatables-bs3/assets/js/datatables.js"></script>
+    <script src="assets/vendor/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
+
+    <!-- Theme Base, Components and Settings -->
+    <script src="assets/javascripts/theme.js"></script>
+
+    <!-- Theme Custom -->
+    <script src="assets/javascripts/theme.custom.js"></script>
+
+    <!-- Theme Initialization Files -->
+    <script src="assets/javascripts/theme.init.js"></script>
+
+    <!-- Examples -->
+    <script src="assets/javascripts/tables/examples.datatables.default.js"></script>
+    <script src="assets/javascripts/tables/examples.datatables.row.with.details.js"></script>
+    <script src="assets/javascripts/tables/examples.datatables.tabletools.js"></script>
+    <script src="assets/javascripts/ui-elements/examples.modals.js"></script>
+
+</body>
+
+</html>
