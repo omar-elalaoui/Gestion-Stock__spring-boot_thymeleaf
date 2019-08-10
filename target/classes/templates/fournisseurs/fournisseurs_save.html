@@ -1,0 +1,66 @@
+<!doctype html>
+<html class="fixed" lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layouts/default">
+
+<body>
+
+    <div id="page" layout:fragment="content">
+        <section role="main" class="content-body">
+            <header class="page-header">
+                <h2>Fornisseur</h2>
+            </header>
+
+            <!-- start: page -->
+
+
+            <!-- Modal -->
+            <section class="panel panel-primary col-md-10 col-md-offset-1">
+                <header class="panel-heading">
+                    <h2 class="panel-title">Ajouter Fornisseur</h2>
+                </header>
+                <div class="panel-body">
+                    <form id="demo-form" class="form-horizontal mb-lg" novalidate="novalidate"
+                           th:action="@{/fournisseurs/save}" th:object="${fournisseur}" method="post">
+                        <input type="hidden" class="form-control"  th:field="*{id}">
+                        <div class="form-group mt-lg">
+                            <label class="col-sm-2 control-label">Nom</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" required="" th:field="*{nom}">
+                            </div>
+                        </div>
+                        <div class="form-group mt-lg">
+                            <label class="col-sm-2 control-label">Adresse</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" required="" th:field="*{adresse}">
+                            </div>
+                        </div>
+                        <div class="form-group mt-lg">
+                            <label class="col-sm-2 control-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" required="" th:field="*{email}">
+                            </div>
+                        </div>
+                        <div class="form-group mt-lg">
+                            <label class="col-sm-2 control-label">Telephone</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" required="" th:field="*{telephone}">
+                            </div>
+                        </div>
+                        <div class="col-3 pull-right">
+                            <button class="btn btn-primary" type="submit"><i class="fas fa-check"></i> Enregistrer</button>
+                            <a class="btn btn-default" href="/fournisseurs"><i class="fas fa-times"></i> Annuler</a>
+                        </div>
+                    </form> <br>
+
+                </div>
+
+            </section>
+
+            <!-- end: page -->
+        </section>
+    </div>
+
+
+
+</body>
+
+</html>

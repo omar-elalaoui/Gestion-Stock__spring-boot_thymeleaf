@@ -1,0 +1,43 @@
+<!doctype html>
+<html class="fixed" lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layouts/default">
+
+<body>
+
+    <div id="page" layout:fragment="content">
+
+        <section role="main" class="content-body">
+            <header class="page-header">
+                <h2>Categorie</h2>
+            </header>
+
+            <!-- start: page -->
+            <section class="panel panel-primary">
+                <header class="panel-heading">
+                    <h2 class="panel-title">Ajouter Categorie</h2>
+                </header>
+                <div class="panel-body">
+                    <form id="demo-form" class="form-horizontal mb-lg" novalidate="novalidate"
+                          th:action="@{/categories/save}" th:object="${categorie}" method="post">
+                        <input type="hidden" th:field="*{id}">
+                        <div class="form-group mt-lg">
+                            <label class="col-sm-3 control-label">Designaion</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" required th:field="*{nom}">
+                            </div>
+                        </div>
+                        <div class="col-3 pull-right">
+                            <button class="btn btn-primary" type="submit"><i class="fas fa-check"></i> Enregistrer</button>
+                            <a class="btn btn-default" href="/categories"><i class="fas fa-times"></i> Annuler</a>
+                        </div>
+                    </form>
+
+                </div>
+
+            </section>
+            <!-- end: page -->
+        </section>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html class="fixed" lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layouts/default">
+
+<body>
+    <div id="page" layout:fragment="content">
+        <section role="main" class="content-body">
+            <header class="page-header">
+                <h2>Fornisseur</h2>
+            </header>
+
+            <!-- start: page -->
+
+            <!-- Table -->
+            <section class="panel">
+                <div class="panel-body">
+                    <a class="btn btn-success" href="utilisateurs/save" ><i class="fas fa-plus-circle"></i> Ajouter</a>
+                    <hr>
+                    <table #dataTable class="table table-bordered table-striped mb-none" id="datatable-default">
+                        <thead>
+                            <tr>
+                                <th>Nom Prenom</th>
+                                <th>Image</th>
+                                <th>Telephone</th>
+                                <th>Adresse</th>
+                                <th>Email</th>
+                                <th>Mot de passe</th>
+                                <th class="center hidden-phone">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="gradeX">
+                                <td>Mohamed Ali</td>
+                                <td></td>
+                                <td>0654782168</td>
+                                <td>Hay Karima Casablanca</td>
+                                <td>Mohamed@gmil.com</td>
+                                <td class="passeword">123456</td>
+                                <td class="center hidden-phone">
+                                    <i class="fas fa-edit text-primary"></i>
+                                    <span class="om-tab">/</span>
+                                    <i class="fas fa-trash-alt text-danger"></i></td>
+                            </tr>
+                            <tr class="gradeX">
+                                <td>Omar El Alaoui</td>
+                                <td></td>
+                                <td>0654782168</td>
+                                <td>Hay Salam Agadir</td>
+                                <td>Mohamed@gmil.com</td>
+                                <td class="passeword">123456</td>
+                                <td class="center hidden-phone">
+                                    <i class="fas fa-edit text-primary"></i>
+                                    <span class="om-tab">/</span>
+                                    <i class="fas fa-trash-alt text-danger"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+
+            <!-- end: page -->
+        </section>
+    </div>
+
+
+
+
+</body>
+
+</html>

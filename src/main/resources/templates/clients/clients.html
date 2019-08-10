@@ -1,0 +1,98 @@
+<!doctype html>
+<html class="fixed" lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layouts/default">
+
+<body>
+    <div id="page" layout:fragment="content">
+
+        <section role="main" class="content-body">
+            <header class="page-header">
+                <h2>Clients</h2>
+
+            </header>
+
+            <!-- start: page -->
+            <!-- table -->
+            <section class="panel">
+                <div class="panel-body">
+                    <a class="btn btn-warning" th:href="@{/clients/form_add}" ><i class="fas fa-plus-circle"></i> Ajouter</a>
+                    <hr>
+                    <table #dataTable class="table table-bordered table-striped mb-none" id="datatable-default">
+                        <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Telephone</th>
+                                <th>Adresse</th>
+                                <th>Email</th>
+                                <th class="center hidden-phone">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="gradeX" th:each="client: ${clients}">
+                                <td th:text="${client.nom}">Mohamed Ali</td>
+                                <td th:text="${client.telephone}">0654782168</td>
+                                <td th:text="${client.adresse}">Hay Karima Casablanca</td>
+                                <td th:text="${client.email}">Mohamed@gmil.com</td>
+                                <td class="center hidden-phone">
+                                    <a th:href="@{/clients/form_update(id=${client.id})}"><i class="fas fa-edit text-primary"></i></a>
+                                    <span class="om-tab">/</span>
+                                    <a class="btn_supp" th:href="@{/clients/delete(id=${client.id})}" ><i class="fas fa-trash-alt text-danger"></i></a>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Modal Supprimer-->
+            <div class="modal fade" id="supp_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Vous etes Sur de supprimer ce produit: ?</h4>
+                        </div>
+                        <div class="modal-footer">
+                            <a class="btn btn-danger submit_supp"><i class="fas fa-trash-alt"></i> Supprimer</a>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fas fa-close text-danger"></i>Fermer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end: page -->
+        </section>
+    </div>
+
+
+
+
+    <!-- Vendor -->
+    <script src="assets/vendor/jquery/jquery.js"></script>
+    <script src="assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.js"></script>
+    <script src="assets/vendor/nanoscroller/nanoscroller.js"></script>
+    <script src="assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="assets/vendor/jquery-placeholder/jquery.placeholder.js"></script>
+
+    <!-- Specific Page Vendor -->
+    <script src="assets/vendor/select2/select2.js"></script>
+    <script src="assets/vendor/jquery-datatables/media/js/jquery.dataTables.js"></script>
+    <script src="assets/vendor/jquery-datatables-bs3/assets/js/datatables.js"></script>
+    <script src="assets/vendor/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
+
+    <!-- Theme Base, Components and Settings -->
+    <script src="assets/javascripts/theme.js"></script>
+
+    <!-- Theme Custom -->
+    <script src="assets/javascripts/theme.custom.js"></script>
+
+    <!-- Theme Initialization Files -->
+    <script src="assets/javascripts/theme.init.js"></script>
+
+    <!-- Examples -->
+    <script src="assets/javascripts/tables/examples.datatables.default.js"></script>
+    <script src="assets/javascripts/tables/examples.datatables.row.with.details.js"></script>
+    <script src="assets/javascripts/tables/examples.datatables.tabletools.js"></script>
+    <script src="assets/javascripts/ui-elements/examples.modals.js"></script>
+
+</body>
+
+</html>

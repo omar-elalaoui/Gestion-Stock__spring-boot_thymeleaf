@@ -1,0 +1,60 @@
+<!doctype html>
+<html class="fixed" lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layouts/default">
+
+<body>
+
+    <div id="page" layout:fragment="content">
+        <section role="main" class="content-body">
+            <header class="page-header">
+                <h2>Commandes de vente</h2>
+            </header>
+
+            <!-- start: page -->
+
+            <!-- Table-->
+            <section class="panel">
+                <div class="panel-body">
+                    <a class="btn btn-warning" href="/sorties/nouvelle_commande"><i class="fas fa-plus-circle"></i> Nouvelle Commande</a>
+                    <hr>
+                    <table #dataTable class="table table-bordered table-striped mb-none" id="datatable-default">
+                        <thead>
+                            <tr>
+                                <th>ID Client</th>
+                                <th>Client</th>
+                                <th>Date Commande</th>
+                                <th>Montant</th>
+                                <th class="center hidden-phone">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="gradeX">
+                                <td>1</td>
+                                <td>Mohamed Ali</td>
+                                <td>25/06/2019</td>
+                                <td>80000</td>
+                                <td class="center hidden-phone">
+                                    <i class="fas fa-edit text-primary"></i>
+                                    <span class="om-tab">/</span>
+                                    <i class="fas fa-trash-alt text-danger"></i></td>
+                            </tr>
+                            <tr class="gradeX">
+                                <td>2</td>
+                                <td>Omar El Alaoui</td>
+                                <td>25/05/2019</td>
+                                <td>25000</td>
+                                <td class="center hidden-phone">
+                                    <i class="fas fa-edit text-primary"></i>
+                                    <span class="om-tab">/</span>
+                                    <i class="fas fa-trash-alt text-danger"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <!-- end: page -->
+        </section>
+    </div>
+
+</body>
+
+</html>

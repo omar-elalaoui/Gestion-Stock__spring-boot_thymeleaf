@@ -1,0 +1,69 @@
+<!doctype html>
+<html class="fixed" lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layouts/default">
+
+<body>
+
+    <div id="page" layout:fragment="content">
+        <section role="main" class="content-body">
+            <header class="page-header">
+                <h2>Fornisseur</h2>
+            </header>
+
+            <!-- start: page -->
+
+            <!-- Table -->
+            <section class="panel">
+                <div class="panel-body">
+                    <a class="btn btn-primary" th:href="@{/fournisseurs/form_add}" ><i class="fas fa-plus-circle"></i> Ajouter</a>
+                    <hr>
+                    <table #dataTable class="table table-bordered table-striped mb-none" id="datatable-default">
+                        <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Telephone</th>
+                                <th>Adresse</th>
+                                <th>Email</th>
+                                <th class="center hidden-phone">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="gradeX" th:each="fournisseur: ${fournisseurs}">
+                                <td th:text="${fournisseur.nom}"></td>
+                                <td th:text="${fournisseur.telephone}"></td>
+                                <td th:text="${fournisseur.adresse}"></td>
+                                <td th:text="${fournisseur.email}"></td>
+                                <td class="center hidden-phone">
+                                    <a href="" th:href="@{/fournisseurs/form_update(id=${fournisseur.id})}"><i class="fas fa-edit text-primary"></i></a>
+                                    <span class="om-tab">/</span>
+                                    <a class="btn_supp" th:href="@{/fournisseurs/delete(id=${fournisseur.id})}"><i class="fas fa-trash-alt text-danger"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Modal Supprimer-->
+            <div class="modal fade" id="supp_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Vous etes Sur de supprimer ce produit: ?</h4>
+                        </div>
+                        <div class="modal-footer">
+                            <a class="btn btn-danger submit_supp"><i class="fas fa-trash-alt"></i> Supprimer</a>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fas fa-close text-danger"></i>Fermer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end: page -->
+        </section>
+    </div>
+
+
+
+</body>
+
+</html>
