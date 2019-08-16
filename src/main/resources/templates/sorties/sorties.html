@@ -2,24 +2,41 @@
 <html class="fixed" lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layouts/default">
 
 <body>
-
     <div id="page" layout:fragment="content">
         <section role="main" class="content-body">
             <header class="page-header">
                 <h2>Commandes de vente</h2>
+
             </header>
 
             <!-- start: page -->
 
+            <!-- Modal Supprimer-->
+            <div class="modal fade" id="supp_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Vous etes Sur de supprimer cette commande?</h4>
+                        </div>
+                        <div class="modal-footer">
+                            <a class="btn btn-danger submit_supp"><i class="fas fa-trash-alt"></i> Supprimer</a>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fas fa-close text-danger"></i>Fermer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             <!-- Table-->
             <section class="panel">
                 <div class="panel-body">
-                    <a class="btn btn-warning" href="/sorties/nouvelle_commande"><i class="fas fa-plus-circle"></i> Nouvelle Commande</a>
+                    <a class="btn btn-warning" href="/entrees/nouvelle_commande"><i class="fas fa-plus-circle"></i> Nouvelle Commande</a>
                     <hr>
                     <table #dataTable class="table table-bordered table-striped mb-none" id="datatable-default">
                         <thead>
                             <tr>
-                                <th>ID Client</th>
+                                <th>ID Facture</th>
                                 <th>Client</th>
                                 <th>Date Commande</th>
                                 <th>Montant</th>
@@ -27,25 +44,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="gradeX">
-                                <td>1</td>
-                                <td>Mohamed Ali</td>
-                                <td>25/06/2019</td>
-                                <td>80000</td>
+                            <tr class="gradeX" th:each="commande : ${commandes_client}">
+                                <td th:text="${commande.id}"></td>
+                                <td th:text="${commande.client.nom}"></td>
+                                <td th:text="${#dates.format(commande.dateCommade, 'dd/MM/yyyy')}"></td>
+                                <td th:text="${commande.montant}"></td>
                                 <td class="center hidden-phone">
-                                    <i class="fas fa-edit text-primary"></i>
-                                    <span class="om-tab">/</span>
-                                    <i class="fas fa-trash-alt text-danger"></i></td>
-                            </tr>
-                            <tr class="gradeX">
-                                <td>2</td>
-                                <td>Omar El Alaoui</td>
-                                <td>25/05/2019</td>
-                                <td>25000</td>
-                                <td class="center hidden-phone">
-                                    <i class="fas fa-edit text-primary"></i>
-                                    <span class="om-tab">/</span>
-                                    <i class="fas fa-trash-alt text-danger"></i></td>
+                                    <a th:href="@{/sorties/details(id=${commande.id})}"><i class="fas fa-file-alt text-success"></i></a>
+                                    <span class="om-tab">|</span>
+                                    <a th:href="@{/sorties/update(id=${commande.id})}"><i class="fas fa-edit text-primary"></i></a>
+                                    <span class="om-tab">|</span>
+                                    <a class="btn_supp" th:href="@{/sorties/delete(id=${commande.id})}"><i class="fas fa-trash-alt text-danger"></i></a>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

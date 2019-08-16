@@ -17,9 +17,9 @@
                 <div class="panel-body">
 
                         <div class="entrees_det">
-                            <strong>Fournisseur:</strong> <span th:text="${commande_fournisseur.fournisseur.nom}"></span> <br>
-                            <strong>Date:</strong> <span th:text="${#dates.format(commande_fournisseur.dateCommande, 'dd/MM/yyyy')}"></span> <br>
-                            <strong>Montant:</strong> <span th:text="${commande_fournisseur.montant}"></span>
+                            <strong>Client:</strong> <span th:text="${commande_client.client.nom}"></span> <br>
+                            <strong>Date:</strong> <span th:text="${#dates.format(commande_client.dateCommade, 'dd/MM/yyyy')}"></span> <br>
+                            <strong>Montant:</strong> <span th:text="${commande_client.montant}"></span>
                         </div><br>
 
                             <!--Ligne de commande-->
@@ -42,7 +42,7 @@
                                             </tr>
                                         </thead>
                                         <tbody class="lignes_commandes_trs">
-                                            <tr th:each="ligne_commande : ${commande_fournisseur.ligneCommandes}">
+                                            <tr th:each="ligne_commande : ${commande_client.ligneCommandes}">
                                                 <td width='12%' th:text="${ligne_commande.id}"></td>
                                                 <td width='12%' class='center hidden-phone'>
                                                    <img  class='img-rounded' width='40' height='40' th:src='@{/produits/getPic(id=${ligne_commande.produit.id})}' alt=''>

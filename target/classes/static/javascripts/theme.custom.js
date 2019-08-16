@@ -14,7 +14,7 @@ $(document).ready(function () {
         $("#supp_modal").modal();
     });
 
-    // ajouter une ligne de commande
+    // ajouter une ligne de commande de fournisseur
     var ligne_cmd_index=$(".cmd_lgn_size").val();
     $(".btn_nv_ligne").click(function (e) {
         var selectedProduitId= $(".produit_list_nv_ligne").val();

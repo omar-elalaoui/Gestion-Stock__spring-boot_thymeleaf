@@ -22,7 +22,16 @@ public class LigneCommandeClientService implements IligneCommandeClientService {
     public void deleteById(Long id) {
         ligneCommandeClientRepository.deleteById(id);
     }
-
+    
+    @Override
+    public void deleteList(List<LigneCommandeClient> ligneCommandeClient) {
+        ligneCommandeClient.forEach(lg -> {
+            lg.setCommandeClient(null);
+            save(lg);
+            deleteById(lg.getId());
+        });
+    }
+    
     @Override
     public LigneCommandeClient findById(Long id) {
         if(!ligneCommandeClientRepository.findById(id).isPresent()) {

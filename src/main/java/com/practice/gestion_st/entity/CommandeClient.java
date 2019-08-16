@@ -16,11 +16,11 @@ public class CommandeClient {
     private Long id;
     private String code;
     private Date dateCommade;
-
+    private Long montant;
     @ManyToOne
     @JoinColumn(name = "client_id")
     private Client client;
 
-    @OneToMany(mappedBy = "commandeClient")
-    private List<LigneCommandeClient> ligneCommandeClientList;
+    @OneToMany(mappedBy = "commandeClient", cascade = CascadeType.ALL)
+    private List<LigneCommandeClient> ligneCommandes;
 }

@@ -49,13 +49,9 @@ public class CommandeFournisseurController {
     }
 
     @GetMapping("/save")
-    public String save(CommandeFournisseur commandeFournisseur, Model model){
+    public String save(CommandeFournisseur commandeFournisseur){
         commandeFournisseur= commandeFournisseurService.cleanCommande(commandeFournisseur);
         commandeFournisseur.setMontant(commandeFournisseurService.getCmdMontant(commandeFournisseur));
-        if(commandeFournisseur.getId() != 0){
-            List<LigneCommandeFournisseur> lg_cmd_f= commandeFournisseurService.findById(commandeFournisseur.getId()).getLigneCommandes();
-            ligneCommandeFournisseurService.deleteList(lg_cmd_f);
-        }
         commandeFournisseurService.save(commandeFournisseur);
         return "redirect:/entrees";
     }

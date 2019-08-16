@@ -7,6 +7,7 @@ import java.util.List;
 public interface IligneCommandeClientService {
     public void save(LigneCommandeClient ligneCommandeClient);
     public void deleteById(Long id);
+    public void deleteList(List<LigneCommandeClient> ligneCommandeClient);
     public LigneCommandeClient findById(Long id);
     public List<LigneCommandeClient> findAll();
 }

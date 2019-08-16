@@ -1,148 +1,150 @@
 <!doctype html>
-<html class="fixed" lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layouts/default">
+<html class="fixed" lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layouts/default">
 
 <body>
+<div id="page" layout:fragment="content">
+    <section role="main" class="content-body">
+        <header class="page-header">
+            <h2>Nouvelle commande de vente</h2>
+        </header>
 
-    <div id="page" layout:fragment="content">
-        <section role="main" class="content-body">
-            <header class="page-header">
-                <h2>Nouvelle commandes de vente</h2>
+        <!-- start: page -->
 
-            </header>
 
-            <!-- start: page -->
-
-            <!-- Modal Animation -->
-            <div id="ajouter" class="modal fade" role="dialog">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <section class="panel panel-primary">
-                                <header class="panel-heading">
-                                    <h2 class="panel-title">Ajouter une lignes de commande</h2>
-                                </header>
-                                <div class="panel-body">
-
-                                    <form id="demo-form" class="form-horizontal mb-lg" novalidate="novalidate">
-                                        <div class="form-group mt-lg">
-                                            <label class="col-sm-3 control-label">Produit</label>
-                                            <div class="col-sm-8">
-                                                <select class="form-control">
-                                                    <option>Option 1</option>
-                                                    <option>Option 2</option>
-                                                    <option>Option 3</option>
-                                                </select>
-                                            </div>
+        <!-- Modal Animation -->
+        <div id="ajouter" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <section class="panel panel-primary">
+                            <header class="panel-heading">
+                                <h2 class="panel-title">Ajouter une lignes de commande</h2>
+                            </header>
+                            <div class="panel-body">
+                                <form id="demo-form" class="form-horizontal mb-lg" novalidate="novalidate">
+                                    <div class="form-group mt-lg">
+                                        <label class="col-sm-3 control-label">Produit</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control produit_list_nv_ligne">
+                                                <option value="">Produit...</option>
+                                                <option th:each="produit: ${produits}" th:value="${produit.id}"
+                                                        th:text="${produit.designation}">
+                                                </option>
+                                            </select>
                                         </div>
-                                        <div class="form-group mt-lg">
-                                            <label class="col-sm-3 control-label">Reste</label>
-                                            <div class="col-sm-4">
-                                                <input type="text" name="name" class="form-control" readonlyf>
-                                            </div>
+                                    </div>
+                                    <div class="form-group mt-lg">
+                                        <label class="col-sm-3 control-label">Quantite</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control ligne_commande_qnt">
                                         </div>
-                                        <div class="form-group mt-lg">
-                                            <label class="col-sm-3 control-label">Quantite</label>
-                                            <div class="col-sm-4">
-                                                <input type="text" name="name" class="form-control" required="">
-                                            </div>
-                                        </div>
-                                    </form>
-
-                                </div>
-                            </section>
-
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-primary modal-confirm">Ajouter</button>
-                            <button class="btn btn-default" data-dismiss="modal">Annuler</button>
-                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary btn_nv_ligne" data-dismiss="modal">Ajouter</button>
+                        <button class="btn btn-default" data-dismiss="modal">Annuler</button>
                     </div>
                 </div>
             </div>
+        </div>
+        <!-- End Modal-->
 
-            <!-- Nouvelle Commande-->
-            <section class="panel panel-featured panel-featured-warning om-panel-s">
-                <header class="panel-heading">
-                    <div class="panel-actions">
-                        <a class="fa fa-caret-down"></a>
-                    </div>
 
-                    <h2 class="panel-title">Nouvelle commande de vente</h2>
-                </header>
-                <div class="panel-body">
+        <!-- Nouvelle Commande-->
+        <section class="panel panel-featured panel-featured-warning om-panel-s">
+            <header class="panel-heading">
+                <div class="panel-actions">
+                    <a href="#" class="fa fa-caret-down"></a>
+                </div>
+                <h2 class="panel-title">Nouvelle commande de vente</h2>
+            </header>
+            <div class="panel-body">
+                <form id="demo-form" class="form-horizontal mb-lg" novalidate="novalidate"
+                      th:action="@{/sorties/save}" th:object="${commande_client}">
 
-                    <form id="demo-form" class="form-horizontal mb-lg" novalidate="novalidate">
-                        <div class="form-group mt-lg">
-                            <label class="col-sm-2 col-md-1 control-label">Client</label>
-                            <div class="col-sm-8 col-md-6">
-                                <select class="form-control">
-                                    <option>Option 1</option>
-                                    <option>Option 2</option>
-                                    <option>Option 3</option>
-                                </select>
-                            </div>
+                    <input type="hidden" th:field="${commande_client.id}">
+                    <div class="form-group mt-lg">
+                        <label class="col-sm-2 col-md-1 control-label">Client</label>
+                        <div class="col-sm-8 col-md-6">
+                            <select class="form-control" th:field="*{client.id}">
+                                <option value="0">Choisir...</option>
+                                <option th:each="client: ${clients}"
+                                        th:selected="${client.id == commande_client.client.id}"
+                                        th:value="${client.id}" th:text="${client.nom}">
+                                </option>
+                            </select>
                         </div>
-                        <div class="form-group mt-lg">
-                            <label class="col-sm-2 col-md-1 control-label">Date</label>
-                            <div class="col-sm-4 col-md-2">
-                                <div class="input-group">
+                    </div>
+                    <div class="form-group mt-lg">
+                        <label class="col-sm-2 col-md-1 control-label">Date</label>
+                        <div class="col-sm-5 col-md-3">
+                            <div class="input-group">
                                     <span class="input-group-addon">
                                         <i class="fas fa-calendar-alt"></i>
                                     </span>
-                                    <input type="text" data-plugin-datepicker="" class="form-control">
-                                </div>
+                                <input type="text" data-plugin-datepicker="" class="form-control" name="dateCommade"
+                                       th:value="${commande_client.dateCommade == null ? #dates.format(#dates.createNow(),'MM/dd/YYYY'):#dates.format(commande_client.dateCommade,'MM/dd/YYYY') }" required
+                                >
                             </div>
                         </div>
-                    </form>
-                    <section class="panel panel-featured panel-featured-warning om-panel-s">
+                    </div>
+                    <br>
+
+                    <!--Ligne de commande-->
+                    <section class="panel panel-featured panel-featured-primary om-panel-s">
                         <header class="panel-heading">
                             <div class="panel-actions">
                                 <a href="#" class="fa fa-caret-down"></a>
                             </div>
-
                             <h2 class="panel-title text-warning">Lignes de commande</h2>
                         </header>
                         <div class="panel-body">
-                            <a class="btn btn-warning om-mb btn-xs " data-toggle="modal" data-target="#ajouter"><i class="fas fa-plus-circle"></i> Nouvelle Ligne</a>
+                            <a class="btn btn-primary om-mb btn-xs " data-toggle="modal" data-target="#ajouter"><i
+                                    class="fas fa-plus-circle"></i> Nouvelle Ligne</a>
                             <table class="table table-bordered table-striped mb-none">
                                 <thead>
-                                    <tr>
-                                        <th>Code</th>
-                                        <th>Designation</th>
-                                        <th>Image</th>
-                                        <th class="hidden-phone">Qte</th>
-                                        <th class="hidden-phone">Prix Vente</th>
-                                        <th class="hidden-phone">Montant</th>
-                                        <th class="center hidden-phone">Action</th>
-                                    </tr>
+                                <tr>
+                                    <th class="center hidden-phone">Code</th>
+                                    <th class="center hidden-phone">Image</th>
+                                    <th>Produit</th>
+                                    <th class="hidden-phone">Quantité</th>
+                                    <th class="center hidden-phone">Action</th>
+                                </tr>
                                 </thead>
-                                <tbody>
-                                    <tr class="gradeX">
-                                        <td>1</td>
-                                        <td>Toshiba 750</td>
-                                        <td></td>
-                                        <td>50</td>
-                                        <td>30</td>
-                                        <td>35000</td>
+                                <input class="cmd_lgn_size" type="hidden" th:value="${commande_client.ligneCommandes.size()}">
+                                <tbody class="lignes_commandes_trs">
+                                    <tr th:each="ligne,stat :${commande_client.ligneCommandes}">
+
+                                        <input type='hidden'  th:field="*{ligneCommandes[__${stat.index}__].id}">
+                                        <input type='hidden'  th:field="*{ligneCommandes[__${stat.index}__].produit.id}">
+                                        <input type='hidden'  th:field="*{ligneCommandes[__${stat.index}__].quantite}">
+
+                                        <td th:text="${ligne.id}" class="center hidden-phone"></td>
                                         <td class="center hidden-phone">
-                                            <i class="fas fa-edit text-primary"></i>
-                                            <span class="om-tab">/</span>
-                                            <i class="fas fa-trash-alt text-danger"></i></td>
+                                            <img  class='img-rounded' width='40' height='40' th:src='@{/produits/getPic(id=${ligne.produit.id})}'>
+                                        </td>
+                                        <td th:text="${ligne.produit.designation}"></td>
+                                        <td th:text="${ligne.quantite}"></td>
+                                        <td class='center hidden-phone'>
+                                        <a class='delete_ligne'><i class='fas fa-trash-alt text-danger'></i></a>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </section>
-                    <a class="btn btn-success"><i class="fas fa-check"></i> Valider la commande</a>&nbsp;
+                    <button class="btn btn-success" type="submit"><i class="fas fa-check"></i> Valider la commande
+                    </button> &nbsp;
                     <a class="btn btn-dark" href="/sorties"><i class="fas fa-times"></i> Annuler</a>
-                </div>
-            </section>
-            <!-- End Nouvelle Commande-->
-
-
-            <!-- end: page -->
+                </form>
+            </div>
         </section>
-    </div>
+    </section>
+</div>
 
 </body>
 

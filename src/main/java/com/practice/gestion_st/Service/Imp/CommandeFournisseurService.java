@@ -17,8 +17,14 @@ public class CommandeFournisseurService implements IcommandeFournisseurService {
     CommandeFournisseurRepository commandeFournisseurRepository;
     @Autowired
     ProduitService produitService;
+    @Autowired
+    LigneCommandeFournisseurService ligneCommandeFournisseurService;
     
     public void save(CommandeFournisseur commandeFournisseur) {
+        if(commandeFournisseur.getId() != 0){
+            List<LigneCommandeFournisseur> lg_cmd_f= findById(commandeFournisseur.getId()).getLigneCommandes();
+            ligneCommandeFournisseurService.deleteList(lg_cmd_f);
+        }
         commandeFournisseur.getLigneCommandes().forEach(lc -> {lc.setCommandeFournisseur(commandeFournisseur);});
         commandeFournisseurRepository.save(commandeFournisseur);
     }
