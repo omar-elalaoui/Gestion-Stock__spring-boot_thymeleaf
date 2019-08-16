@@ -5,6 +5,9 @@
 [hidden]{
     display: none !important;
 }
+.modal-body{
+    padding: 0 !important;
+}
 tbody  tr  td {
     vertical-align: middle !important;
 }
@@ -56,7 +59,7 @@ table thead{
 .om-panel-s .panel-title{
     font-size: 18px;
 }
-.panel-body .p_det{
+.panel-body .p_det, .entrees_det{
     font-size: 15px;
 }
 .panel-body .p_det > div{

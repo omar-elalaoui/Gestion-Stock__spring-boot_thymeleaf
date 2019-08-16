@@ -36,27 +36,27 @@
                     <table #dataTable class="table table-bordered table-striped mb-none" id="datatable-default">
                         <thead>
                             <tr>
-                                <th>Image</th>
+                                <th class="center hidden-phone">Image</th>
                                 <th>Designation</th>
                                 <th class="hidden-phone">Catégorie</th>
                                 <th class="hidden-phone">Fornisseur</th>
-                                <th class="hidden-phone">Qte Stock</th>
+                                <th class="center hidden-phone">Qte Stock</th>
                                 <th class="center hidden-phone">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr class="gradeX" th:each="produit : ${produits}">
-                                <td><img th:src="@{/produits/getPic(id=${produit.id})}" class="img-rounded" width="40" height="40"> </td>
+                                <td class="center hidden-phone"><img th:src="@{/produits/getPic(id=${produit.id})}" class="img-rounded" width="40" height="40"> </td>
                                 <td th:text="${produit.designation}"></td>
                                 <td th:text="${produit.categorie.nom}">Ordinateur</td>
                                 <td th:text="${produit.fournisseur.nom}">Omar El Alaoui</td>
-                                <td th:text="${produit.qnt_stocke}">50</td>
+                                <td th:text="${produit.qnt_stocke}" class="center hidden-phone" >50</td>
                                 <td class="center hidden-phone">
                                     <a class="fas fa-edit text-primary" th:href="@{/produits/form_update(id=${produit.id})}"></a>
                                     <span class="om-tab">|</span>
                                     <a class="btn_supp" th:href="@{/produits/delete(id=${produit.id})}" ><i class="fas fa-trash-alt text-danger"></i></a>
                                     <span class="om-tab">|</span>
-                                    <a th:href="@{/produits/details}"><i class="fas fa-file-alt text-success"></i></a>
+                                    <a th:href="@{/produits/details(id=${produit.id})}"><i class="fas fa-file-alt text-success"></i></a>
                                 </td>
 
                             </tr>

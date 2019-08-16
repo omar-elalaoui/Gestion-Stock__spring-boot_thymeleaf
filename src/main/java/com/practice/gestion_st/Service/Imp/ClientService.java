@@ -33,7 +33,7 @@ public class ClientService implements IclientService {
 	@Override
 	public Client findById(int id) {
 		if(!clientRepository.findById(id).isPresent()) {
-			throw new RuntimeException("produit not found "+id);
+			throw new RuntimeException("client not found "+id);
 		}
 		return clientRepository.findById(id).get();
 	}

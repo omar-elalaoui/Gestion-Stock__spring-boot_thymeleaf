@@ -35,7 +35,7 @@ public class FournisseurService implements IfournisseurService {
 	@Override
 	public Fournisseur findById(int id) {
 		if(!fournisseurRepository.findById(id).isPresent()) {
-			throw new RuntimeException("produit not found "+id);
+			throw new RuntimeException("fournisseur not found "+id);
 		}
 		return fournisseurRepository.findById(id).get();
 	}

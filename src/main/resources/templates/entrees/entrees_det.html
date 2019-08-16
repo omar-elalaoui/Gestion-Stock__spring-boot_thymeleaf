@@ -1,0 +1,71 @@
+<!doctype html>
+<html class="fixed" lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layouts/default">
+
+<body>
+    <div id="page" layout:fragment="content">
+        <section role="main" class="content-body">
+            <header class="page-header">
+                <h2>Commandes d'Achat</h2>
+
+            </header>
+
+            <!-- start: page -->
+            <section class="panel panel-default col-md-10 col-md-offset-1">
+                <header class="panel-heading">
+                    <h2 class="panel-title">Commande</h2>
+                </header>
+                <div class="panel-body">
+
+                        <div class="entrees_det">
+                            <strong>Fournisseur:</strong> <span th:text="${commande_fournisseur.fournisseur.nom}"></span> <br>
+                            <strong>Date:</strong> <span th:text="${#dates.format(commande_fournisseur.dateCommande, 'dd/MM/yyyy')}"></span> <br>
+                            <strong>Montant:</strong> <span th:text="${commande_fournisseur.montant}"></span>
+                        </div><br>
+
+                            <!--Ligne de commande-->
+                            <section class="panel panel-featured panel-featured-primary om-panel-s">
+                                <header class="panel-heading">
+                                    <div class="panel-actions">
+                                        <a href="#" class="fa fa-caret-down"></a>
+                                    </div>
+                                    <h2 class="panel-title text-primary">Lignes de commande</h2>
+                                </header>
+                                <div class="panel-body">
+                                    <table class="table table-bordered table-striped mb-none">
+                                        <thead>
+                                            <tr>
+                                                <th class="center hidden-phone">Code</th>
+                                                <th class="center hidden-phone">Image</th>
+                                                <th>Produit</th>
+                                                <th>Prix Unitaire</th>
+                                                <th class="hidden-phone">Quantité</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="lignes_commandes_trs">
+                                            <tr th:each="ligne_commande : ${commande_fournisseur.ligneCommandes}">
+                                                <td width='12%' th:text="${ligne_commande.id}"></td>
+                                                <td width='12%' class='center hidden-phone'>
+                                                   <img  class='img-rounded' width='40' height='40' th:src='@{/produits/getPic(id=${ligne_commande.produit.id})}' alt=''>
+                                                </td>
+                                                <td th:text="${ligne_commande.produit.designation}"></td>
+                                                <td th:text="${ligne_commande.produit.prix_unitaire}"></td>
+                                                <td th:text="${ligne_commande.quantite}"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </section>
+
+                    <br>
+                    <div class="col-3 pull-right">
+                        <a class="btn btn-default" href="/entrees"><i class="fas fa-times"></i> Fermer</a>
+                    </div>
+                </div>
+            </section>
+            <!-- end: page -->
+        </section>
+    </div>
+
+</body>
+
+</html>

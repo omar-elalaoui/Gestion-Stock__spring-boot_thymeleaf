@@ -31,7 +31,7 @@
                                 <td th:text="${categorie.nom}">Informatique</td>
                                 <td class="center hidden-phone">
                                     <a th:href="@{/categories/form_update(id=${categorie.id})}"><i class="fas fa-edit text-primary"></i></a>
-                                    <span class="om-tab">/</span>
+                                    <span class="om-tab">|</span>
                                     <a class="btn_supp" th:href="@{/categories/delete(id=${categorie.id})}" ><i class="fas fa-trash-alt text-danger"></i></a>
                                 </td>
                             </tr>

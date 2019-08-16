@@ -34,7 +34,7 @@
                                 <td th:text="${client.email}">Mohamed@gmil.com</td>
                                 <td class="center hidden-phone">
                                     <a th:href="@{/clients/form_update(id=${client.id})}"><i class="fas fa-edit text-primary"></i></a>
-                                    <span class="om-tab">/</span>
+                                    <span class="om-tab">|</span>
                                     <a class="btn_supp" th:href="@{/clients/delete(id=${client.id})}" ><i class="fas fa-trash-alt text-danger"></i></a>
                             </tr>
                         </tbody>

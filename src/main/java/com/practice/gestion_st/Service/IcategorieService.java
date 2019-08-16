@@ -1,7 +1,6 @@
 package com.practice.gestion_st.Service;
 
 import java.util.List;
-
 import com.practice.gestion_st.Entity.Categorie;
 
 public interface IcategorieService {

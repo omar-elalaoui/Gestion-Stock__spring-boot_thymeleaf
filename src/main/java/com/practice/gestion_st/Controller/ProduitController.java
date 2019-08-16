@@ -2,9 +2,7 @@ package com.practice.gestion_st.Controller;
 
 import com.practice.gestion_st.Service.Imp.CategorieService;
 import com.practice.gestion_st.Service.Imp.FournisseurService;
-import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,7 +34,8 @@ public class ProduitController {
 		return "produits/produits";
 	}
 	@GetMapping("/details")
-	public String produits_details(Model modal) {
+	public String produits_details(Long id,Model model) {
+		model.addAttribute("produit", produitService.findById(id));
 		return "produits/produits_det";
 	}
 
@@ -49,7 +48,7 @@ public class ProduitController {
 	}
 
 	@GetMapping("/form_update")
-	public String produits_form_update(int id, Model model) {
+	public String produits_form_update(Long id, Model model) {
 		model.addAttribute("produit", produitService.findById(id));
 		model.addAttribute("fournisseurs", fournisseurService.findAll());
 		model.addAttribute("categories", categorieService.findAll());
@@ -65,12 +64,12 @@ public class ProduitController {
 
 	@RequestMapping(value = "/getPic", produces = MediaType.IMAGE_JPEG_VALUE)
 	@ResponseBody
-	public byte[] getPic(int id) throws IOException {
+	public byte[] getPic(Long id) throws IOException {
 		return produitService.findImageById(id);
 	}
 
 	@GetMapping("/delete")
-	public String produits_delete(int id) {
+	public String produits_delete(Long id) {
 		produitService.deleteById(id);
 		return "redirect:/produits";
 	}

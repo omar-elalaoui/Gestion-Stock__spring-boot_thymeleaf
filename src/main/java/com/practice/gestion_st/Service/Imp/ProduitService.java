@@ -44,7 +44,7 @@ public class ProduitService implements IproduitService {
 	}
 
 	@Override
-	public void deleteById(int id) {
+	public void deleteById(Long id) {
 		File file=new File(produitsDirPath+"/"+id);
 		if(file.exists()){
 			if(file.delete()){ System.out.println("File deleted successfully");
@@ -54,7 +54,7 @@ public class ProduitService implements IproduitService {
 	}
 
 	@Override
-	public Produit findById(int id) {
+	public Produit findById(Long id) {
 		if(!produitRepo.findById(id).isPresent()) {
 			throw new RuntimeException("produit not found "+id);
 		}
@@ -62,7 +62,7 @@ public class ProduitService implements IproduitService {
 	}
 
 	@Override
-	public byte[] findImageById(int id) throws IOException {
+	public byte[] findImageById(Long id) throws IOException {
 		File image= new File(produitsDirPath+"/"+id);
 		FileInputStream inputStream= new FileInputStream(image);
 		byte[] imgb= IOUtils.toByteArray(inputStream);

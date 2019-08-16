@@ -12,7 +12,7 @@
             <!-- start: page -->
             <section class="panel panel-default col-md-10 col-md-offset-1">
                 <header class="panel-heading">
-                    <h2 class="panel-title">Xiami Redmi Note 4</h2>
+                    <h2 class="panel-title" th:text="${produit.designation}"></h2>
                 </header>
                 <div class="panel-body">
 
@@ -20,38 +20,42 @@
                     <div class="row">
 
                         <div class="col-md-5">
-                            <img class="img-fluid" src="http://placehold.it/260x300" alt="">
+                            <br>
+                            <div width="250px" height="250px">
+                                <img class="img-responsive" th:src="@{/produits/getPic(id=${produit.id})}">
+                            </div>
+
                         </div>
 
                         <div class="col-md-7 p_det">
                           <br>
                            <div class="row">
                                 <div class="col-md-5 head">Designation</div>
-                                <div class="col-md-7">Xiami redmi note 4</div>
+                                <div class="col-md-7" th:text="${produit.designation}"></div>
                            </div>
                            <div class="row">
                                 <div class="col-md-5 head">Categorie</div>
-                                <div class="col-md-7">Télephone</div>
+                                <div class="col-md-7" th:text="${produit.categorie.nom}"></div>
                            </div>
                            <div class="row">
                                 <div class="col-md-5 head">Fournisseur</div>
-                                <div class="col-md-7">Ahmed ali</div>
+                                <div class="col-md-7" th:text="${produit.fournisseur.nom}"> </div>
                            </div>
                            <div class="row">
                                 <div class="col-md-5 head">Quantité en stock</div>
-                                <div class="col-md-7">53</div>
+                                <div class="col-md-7" th:text="${produit.qnt_stocke}"></div>
                            </div>
                            <div class="row">
                                 <div class="col-md-5 head">Prix unitaire</div>
-                                <div class="col-md-7">1200</div>
+                                <div class="col-md-7" th:text="${produit.prix_unitaire}"></div>
                            </div>
                            <div class="row">
                                 <div class="col-md-5 head">Prix de vente</div>
-                                <div class="col-md-7">2500</div>
+                                <div class="col-md-7" th:text="${produit.prix_vente}"></div>
                            </div>
                            <div class="row">
                                 <div class="col-md-5 head">Marge</div>
-                                <div class="col-md-7">1300</div>
+                                <div class="col-md-7" th:text="${produit.prix_vente - produit.prix_unitaire}"></div>
                            </div>
                         </div>
 

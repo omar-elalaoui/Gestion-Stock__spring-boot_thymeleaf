@@ -9,8 +9,8 @@ import org.springframework.web.multipart.MultipartFile;
 public interface IproduitService {
 	public void save(Produit p);
 	public void save(Produit p, MultipartFile pic) throws IOException;
-	public void deleteById(int id);
-	public Produit findById(int id);
-	public byte[] findImageById(int id) throws IOException;
+	public void deleteById(Long id);
+	public Produit findById(Long id);
+	public byte[] findImageById(Long id) throws IOException;
 	public List<Produit> findAll();
 }
