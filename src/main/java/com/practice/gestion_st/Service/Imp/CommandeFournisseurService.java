@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -20,6 +21,7 @@ public class CommandeFournisseurService implements IcommandeFournisseurService {
     @Autowired
     LigneCommandeFournisseurService ligneCommandeFournisseurService;
     
+    @Override
     public void save(CommandeFournisseur commandeFournisseur) {
         if(commandeFournisseur.getId() != 0){
             List<LigneCommandeFournisseur> lg_cmd_f= findById(commandeFournisseur.getId()).getLigneCommandes();
@@ -28,20 +30,21 @@ public class CommandeFournisseurService implements IcommandeFournisseurService {
         commandeFournisseur.getLigneCommandes().forEach(lc -> {lc.setCommandeFournisseur(commandeFournisseur);});
         commandeFournisseurRepository.save(commandeFournisseur);
     }
-
-
+    
+    @Override
     public void deleteById(Long id) {
         commandeFournisseurRepository.deleteById(id);
     }
-
-
+    
+    @Override
     public CommandeFournisseur findById(Long id) {
         if(!commandeFournisseurRepository.findById(id).isPresent()) {
             throw new RuntimeException("commande not found "+id);
         }
         return commandeFournisseurRepository.findById(id).get();
     }
-
+    
+    @Override
     public long getCmdMontant(CommandeFournisseur cf){
         long montant=0;
         for(LigneCommandeFournisseur lgF: cf.getLigneCommandes()){
@@ -50,6 +53,12 @@ public class CommandeFournisseurService implements IcommandeFournisseurService {
         return montant;
     }
     
+    @Override
+    public long getCmdsMontant(List<CommandeFournisseur> cmdsF){
+        return cmdsF.stream().mapToLong(CommandeFournisseur::getMontant).sum();
+    }
+    
+    @Override
     public CommandeFournisseur cleanCommande(CommandeFournisseur cf){
         List<LigneCommandeFournisseur> lgC= new ArrayList<LigneCommandeFournisseur>();
         cf.getLigneCommandes().forEach(lc -> {
@@ -59,7 +68,12 @@ public class CommandeFournisseurService implements IcommandeFournisseurService {
         return cf;
     }
     
+    @Override
     public List<CommandeFournisseur> findAll() {
         return commandeFournisseurRepository.findAll();
+    }
+    @Override
+    public List<CommandeFournisseur> findByDateBetween(Date d1, Date d2) {
+        return commandeFournisseurRepository.findByDateBetween(d1, d2);
     }
 }

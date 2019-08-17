@@ -5,48 +5,36 @@
     <div id="page" layout:fragment="content">
         <section role="main" class="content-body">
             <header class="page-header">
-                <h2>Facture de vente</h2>
+                <h2>Journal</h2>
             </header>
 
             <!-- start: page -->
-
 
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
                     <section class="panel panel-featured panel-featured-success om-panel-s">
                         <div class="panel-body">
-                            <div class="form-group">
-                                <label class="col-sm-3  control-label">Categorie</label>
-                                <div class="col-sm-9 ">
-                                    <select class="form-control">
-                                        <option>Option 1</option>
-                                        <option>Option 2</option>
-                                        <option>Option 3</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">Date range</label>
-                                <div class="col-sm-9">
-                                    <div class="input-daterange input-group" data-plugin-datepicker="">
+                            <form th:action="@{/journal/extrait}">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Date range</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-daterange input-group" data-plugin-datepicker="">
                                         <span class="input-group-addon">
                                             <i class="fas fa-calendar-alt"></i>
                                         </span>
-                                        <input type="text" class="form-control" name="start">
-                                        <span class="input-group-addon">to</span>
-                                        <input type="text" class="form-control" name="end">
+                                            <input type="text" class="form-control" name="d1" required>
+                                            <span class="input-group-addon">to</span>
+                                            <input type="text" class="form-control" name="d2" required>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             <br>
-                            <button class="btn btn-success"> Rechercher</button>
+                            <button class="btn btn-success" type="submit"> Rechercher</button>
+                            </form>
                         </div>
                     </section>
                 </div>
             </div>
-
-
-
 
 
             <!--les tables-->
@@ -55,40 +43,33 @@
                     <div class="panel-actions">
                         <a href="#" class="fa fa-caret-down"></a>
                     </div>
-                    <h2 class="panel-title">Factures d'Achat <span class="om-tab2">Qte Total : <span>5000</span></span></h2>
+                    <h2 class="panel-title">Factures d'Achat <span class="om-tab2">Montant Total : <span th:text="${montant_f}+ ' DH'"></span></span></h2>
                 </header>
                 <div class="panel-body">
-                    <table class="table table-bordered table-striped mb-none">
+                    <table #dataTable class="table display table-bordered table-striped mb-none" id="">
                         <thead>
-                            <tr>
-                                <th>ID Facture</th>
-                                <th>Client</th>
-                                <th>Date</th>
-                                <th>Montant Total</th>
-                                <th class="center hidden-phone">Action</th>
-                            </tr>
+                        <tr>
+                            <th>ID</th>
+                            <th>Fournisseur</th>
+                            <th>Date</th>
+                            <th>Montant</th>
+                            <th class="center hidden-phone">Facture</th>
+                            <th class="center hidden-phone">Détails</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            <tr class="gradeX">
-                                <td>2</td>
-                                <td>Mohamed Ali</td>
-                                <td>26/02/2019</td>
-                                <td>4000</td>
-                                <td class="center hidden-phone">
-                                    <i class="far fa-file-pdf text-primary"></i>
-                                    <span class="om-tab">/</span>
-                                    <i class="fas fa-trash-alt text-danger"></i></td>
-                            </tr>
-                            <tr class="gradeX">
-                                <td>2</td>
-                                <td>Omar El Alaoui</td>
-                                <td>26/02/2019</td>
-                                <td>8000</td>
-                                <td class="center hidden-phone">
-                                    <i class="far fa-file-pdf text-primary"></i>
-                                    <span class="om-tab">/</span>
-                                    <i class="fas fa-trash-alt text-danger"></i></td>
-                            </tr>
+                        <tr class="gradeX" th:each="commande_fournisseur : ${commandes_fournisseur}">
+                            <td th:text="${commande_fournisseur.id}"></td>
+                            <td th:text="${commande_fournisseur.fournisseur.nom}"></td>
+                            <td th:text="${#dates.format(commande_fournisseur.dateCommande, 'dd/MM/yyyy')}"></td>
+                            <td th:text="${commande_fournisseur.montant}"></td>
+                            <td class="center hidden-phone">
+                                <a th:href="@{/entrees/facture(id=${commande_fournisseur.id})}"><i class="far fa-file-pdf text-info"></i></a>
+                            </td>
+                            <td class="center hidden-phone">
+                                <a th:href="@{/entrees/details(id=${commande_fournisseur.id})}"><i class="fas fa-file-alt text-success"></i></a>
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
@@ -99,40 +80,34 @@
                     <div class="panel-actions">
                         <a href="#" class="fa fa-caret-down"></a>
                     </div>
-                    <h2 class="panel-title">Factures de vente <span class="om-tab2">Qte Total : <span>5000</span></span></h2>
+                    <h2 class="panel-title">Factures de vente <span class="om-tab2">Montant Total : <span th:text="${montant_c} + ' DH'"></span></span></h2>
                 </header>
                 <div class="panel-body">
-                    <table class="table table-bordered table-striped mb-none">
+
+                    <table #dataTable class="table display table-bordered table-striped mb-none" id="">
                         <thead>
-                            <tr>
-                                <th>ID Facture</th>
-                                <th>Fournisseur</th>
-                                <th>Date</th>
-                                <th>Montant Total</th>
-                                <th class="center hidden-phone">Action</th>
-                            </tr>
+                        <tr>
+                            <th>ID Facture</th>
+                            <th>Client</th>
+                            <th>Date Commande</th>
+                            <th>Montant</th>
+                            <th class="center hidden-phone">Facture</th>
+                            <th class="center hidden-phone">Détails</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            <tr class="gradeX">
-                                <td>2</td>
-                                <td>Mohamed Ali</td>
-                                <td>26/02/2019</td>
-                                <td>4000</td>
-                                <td class="center hidden-phone">
-                                    <i class="far fa-file-pdf text-primary"></i>
-                                    <span class="om-tab">/</span>
-                                    <i class="fas fa-trash-alt text-danger"></i></td>
-                            </tr>
-                            <tr class="gradeX">
-                                <td>2</td>
-                                <td>Omar El Alaoui</td>
-                                <td>26/02/2019</td>
-                                <td>8000</td>
-                                <td class="center hidden-phone">
-                                    <i class="far fa-file-pdf text-primary"></i>
-                                    <span class="om-tab">/</span>
-                                    <i class="fas fa-trash-alt text-danger"></i></td>
-                            </tr>
+                        <tr class="gradeX" th:each="commande : ${commandes_client}">
+                            <td th:text="${commande.id}"></td>
+                            <td th:text="${commande.client.nom}"></td>
+                            <td th:text="${#dates.format(commande.dateCommande, 'dd/MM/yyyy')}"></td>
+                            <td th:text="${commande.montant}"></td>
+                            <td class="center hidden-phone">
+                                <a th:href="@{/sorties/facture(id=${commande.id})}"><i class="far fa-file-pdf text-info"></i></a>
+                            </td>
+                            <td class="center hidden-phone">
+                                <a th:href="@{/sorties/details(id=${commande.id})}"><i class="fas fa-file-alt text-success"></i></a>
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
@@ -140,8 +115,6 @@
             <!-- end: page -->
         </section>
     </div>
-
-
 </body>
 
 </html>

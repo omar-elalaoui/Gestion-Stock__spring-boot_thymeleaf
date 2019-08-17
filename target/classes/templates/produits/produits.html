@@ -40,7 +40,8 @@
                                 <th>Designation</th>
                                 <th class="hidden-phone">Catégorie</th>
                                 <th class="hidden-phone">Fornisseur</th>
-                                <th class="center hidden-phone">Qte Stock</th>
+                                <th class="center hidden-phone">Quantité</th>
+                                <th class="center hidden-phone">Détails</th>
                                 <th class="center hidden-phone">Action</th>
                             </tr>
                         </thead>
@@ -52,11 +53,12 @@
                                 <td th:text="${produit.fournisseur.nom}">Omar El Alaoui</td>
                                 <td th:text="${produit.qnt_stocke}" class="center hidden-phone" >50</td>
                                 <td class="center hidden-phone">
+                                    <a th:href="@{/produits/details(id=${produit.id})}"><i class="fas fa-file-alt text-success"></i></a>
+                                </td>
+                                <td class="center hidden-phone">
                                     <a class="fas fa-edit text-primary" th:href="@{/produits/form_update(id=${produit.id})}"></a>
                                     <span class="om-tab">|</span>
                                     <a class="btn_supp" th:href="@{/produits/delete(id=${produit.id})}" ><i class="fas fa-trash-alt text-danger"></i></a>
-                                    <span class="om-tab">|</span>
-                                    <a th:href="@{/produits/details(id=${produit.id})}"><i class="fas fa-file-alt text-success"></i></a>
                                 </td>
 
                             </tr>

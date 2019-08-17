@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -42,6 +43,7 @@ public class CommandeClientService implements IcommandeClientService {
         return commandeClientRepository.findById(id).get();
     }
     
+    @Override
     public long getCmdMontant(CommandeClient cf){
         long montant=0;
         for(LigneCommandeClient lgC: cf.getLigneCommandes()){
@@ -50,6 +52,17 @@ public class CommandeClientService implements IcommandeClientService {
         return montant;
     }
     
+    @Override
+    public long getCmdsMontant(List<CommandeClient> cmdsF){
+        return cmdsF.stream().mapToLong(CommandeClient::getMontant).sum();
+    }
+    
+    @Override
+    public List<CommandeClient> findByDateBetween(Date d1, Date d2) {
+        return commandeClientRepository.findByDateBetween(d1, d2);
+    }
+    
+    @Override
     public CommandeClient cleanCommande(CommandeClient cf){
         List<LigneCommandeClient> lgC= new ArrayList<LigneCommandeClient>();
         cf.getLigneCommandes().forEach(lc -> {

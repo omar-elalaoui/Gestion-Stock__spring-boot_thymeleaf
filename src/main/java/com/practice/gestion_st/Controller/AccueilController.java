@@ -7,7 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class AccueilController {
     @GetMapping("/accueil")
-    public String facture_vente(Model model){
+    public String accueila(Model model){
         return "accueil";
+    }
+    @GetMapping("/")
+    public String accueil(Model model){ return "redirect:/accueil";
     }
 }

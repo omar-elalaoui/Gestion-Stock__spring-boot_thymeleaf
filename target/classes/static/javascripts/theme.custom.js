@@ -1,5 +1,7 @@
 /* Add here all your JS customizations */
 $(document).ready(function () {
+    // lancer deux dables dans la page journal
+    $('table.display').DataTable();
 
     // supprimer les lignes de commandes
     $(document).on("click", ".delete_ligne" , function() {
