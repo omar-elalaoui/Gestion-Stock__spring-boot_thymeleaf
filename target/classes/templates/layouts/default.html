@@ -38,6 +38,9 @@
 
     <!-- Head Libs -->
     <script th:src="@{/vendor/modernizr/modernizr.js}"></script>
+
+    <!-- Fivicon-->
+    <link rel="icon" type="image/png" th:href="@{/images/logo-16.png}" />
 </head>
 
 <body>
@@ -45,7 +48,7 @@
         <header class="header">
             <div class="logo-container">
                 <a href="../" class="logo">
-<!--                    <img th:src="@{/images/omar.jpg}" height="35" alt="Porto Admin" />-->
+                    <img th:src="@{/images/logo-40.png}" height="35" alt="Porto Admin" />
                 </a>
                 <div class="visible-xs toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
                     <i class="fa fa-bars" aria-label="Toggle sidebar"></i>
@@ -87,7 +90,7 @@
                                 <a role="menuitem" tabindex="-1" href="#" data-lock-screen="true"><i class="fa fa-lock"></i> Lock Screen</a>
                             </li>
                             <li>
-                                <a role="menuitem" tabindex="-1" href="pages-signin.html"><i class="fa fa-power-off"></i> Logout</a>
+                                <a role="menuitem" tabindex="-1" th:href="@{login?logout}"><i class="fa fa-power-off"></i> Logout</a>
                             </li>
                         </ul>
                     </div>
