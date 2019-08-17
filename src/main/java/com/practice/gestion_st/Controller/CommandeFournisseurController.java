@@ -73,5 +73,16 @@ public class CommandeFournisseurController {
         commandeFournisseurService.deleteById(id);
         return "redirect:/entrees";
     }
+    
+    @GetMapping("/facture")
+    public String facture_vente(long id, Model model){
+        model.addAttribute("commande", commandeFournisseurService.findById(id));
+        return "facture";
+    }
+    @GetMapping("/facture_print")
+    public String facture_prin(long id, Model model){
+        model.addAttribute("commande", commandeFournisseurService.findById(id));
+        return "facture_print";
+    }
 
 }

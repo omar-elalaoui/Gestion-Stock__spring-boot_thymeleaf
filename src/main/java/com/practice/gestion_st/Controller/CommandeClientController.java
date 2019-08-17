@@ -54,21 +54,32 @@ public class CommandeClientController {
     }
     
     @GetMapping("/update")
-    public String update(Long id, Model model){
+    public String update(long id, Model model){
         model.addAttribute("clients", clientService.findAll());
         model.addAttribute("produits", produitService.findAll());
         model.addAttribute("commande_fournisseur", commandeClientService.findById(id));
         return "/sorties/sorties_save";
     }
     @GetMapping("/details")
-    public String details(Long id, Model model){
+    public String details(long id, Model model){
         model.addAttribute("commande_client", commandeClientService.findById(id));
         return "/sorties/sorties_det";
     }
     @GetMapping("/delete")
-    public String delete(Long id, Model model){
+    public String delete(long id, Model model){
         commandeClientService.deleteById(id);
         return "redirect:/sorties";
+    }
+    
+    @GetMapping("/facture")
+    public String facture_vente(long id, Model model){
+        model.addAttribute("commande", commandeClientService.findById(id));
+        return "facture";
+    }
+    @GetMapping("/facture_print")
+    public String facture_prin(long id, Model model){
+        model.addAttribute("commande", commandeClientService.findById(id));
+        return "facture_print";
     }
 
 }

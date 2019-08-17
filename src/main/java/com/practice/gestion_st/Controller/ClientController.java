@@ -1,6 +1,5 @@
 package com.practice.gestion_st.Controller;
 
-import com.practice.gestion_st.Dao.ClientRepository;
 import com.practice.gestion_st.Entity.Client;
 import com.practice.gestion_st.Service.Imp.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;

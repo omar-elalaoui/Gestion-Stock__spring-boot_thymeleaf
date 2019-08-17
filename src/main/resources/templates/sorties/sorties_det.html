@@ -5,7 +5,7 @@
     <div id="page" layout:fragment="content">
         <section role="main" class="content-body">
             <header class="page-header">
-                <h2>Commandes d'Achat</h2>
+                <h2>Commandes de vente</h2>
 
             </header>
 
@@ -18,7 +18,7 @@
 
                         <div class="entrees_det">
                             <strong>Client:</strong> <span th:text="${commande_client.client.nom}"></span> <br>
-                            <strong>Date:</strong> <span th:text="${#dates.format(commande_client.dateCommade, 'dd/MM/yyyy')}"></span> <br>
+                            <strong>Date:</strong> <span th:text="${#dates.format(commande_client.dateCommande, 'dd/MM/yyyy')}"></span> <br>
                             <strong>Montant:</strong> <span th:text="${commande_client.montant}"></span>
                         </div><br>
 

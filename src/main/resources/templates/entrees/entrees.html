@@ -36,10 +36,12 @@
                     <table #dataTable class="table table-bordered table-striped mb-none" id="datatable-default">
                         <thead>
                             <tr>
-                                <th>ID Facture</th>
+                                <th>ID</th>
                                 <th>Fournisseur</th>
-                                <th>Date Commande</th>
+                                <th>Date</th>
                                 <th>Montant</th>
+                                <th class="center hidden-phone">Facture</th>
+                                <th class="center hidden-phone">Détails</th>
                                 <th class="center hidden-phone">Action</th>
                             </tr>
                         </thead>
@@ -50,8 +52,12 @@
                                 <td th:text="${#dates.format(commande_fournisseur.dateCommande, 'dd/MM/yyyy')}"></td>
                                 <td th:text="${commande_fournisseur.montant}"></td>
                                 <td class="center hidden-phone">
+                                    <a th:href="@{/entrees/facture(id=${commande_fournisseur.id})}"><i class="far fa-file-pdf text-info"></i></a>
+                                </td>
+                                <td class="center hidden-phone">
                                     <a th:href="@{/entrees/details(id=${commande_fournisseur.id})}"><i class="fas fa-file-alt text-success"></i></a>
-                                    <span class="om-tab">|</span>
+                                </td>
+                                <td class="center hidden-phone">
                                     <a th:href="@{/entrees/update(id=${commande_fournisseur.id})}"><i class="fas fa-edit text-primary"></i></a>
                                     <span class="om-tab">|</span>
                                     <a class="btn_supp" th:href="@{/entrees/delete(id=${commande_fournisseur.id})}"><i class="fas fa-trash-alt text-danger"></i></a>

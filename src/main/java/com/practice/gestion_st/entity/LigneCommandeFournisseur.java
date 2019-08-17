@@ -13,7 +13,6 @@ public class LigneCommandeFournisseur {
     @GeneratedValue
     private long id;
     private int quantite;
-    private Long montant;
     @ManyToOne
     @JoinColumn(name = "produit_id")
     private Produit produit;

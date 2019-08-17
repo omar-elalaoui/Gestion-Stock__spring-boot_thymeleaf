@@ -13,9 +13,9 @@ import java.util.List;
 public class CommandeClient {
     @Id
     @GeneratedValue
-    private Long id;
+    private long id;
     private String code;
-    private Date dateCommade;
+    private Date dateCommande;
     private Long montant;
     @ManyToOne
     @JoinColumn(name = "client_id")

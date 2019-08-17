@@ -21,7 +21,7 @@ public class CommandeClientService implements IcommandeClientService {
     
     @Override
     public void save(CommandeClient commandeClient) {
-        if(commandeClient.getId() != null){
+        if(commandeClient.getId() != 0){
             List<LigneCommandeClient> lg_cmd_c= findById(commandeClient.getId()).getLigneCommandes();
             ligneCommandeClientService.deleteList(lg_cmd_c);
         }

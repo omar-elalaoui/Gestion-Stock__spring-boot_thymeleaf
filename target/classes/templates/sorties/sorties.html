@@ -40,6 +40,8 @@
                                 <th>Client</th>
                                 <th>Date Commande</th>
                                 <th>Montant</th>
+                                <th>Facture</th>
+                                <th>Détails</th>
                                 <th class="center hidden-phone">Action</th>
                             </tr>
                         </thead>
@@ -47,11 +49,15 @@
                             <tr class="gradeX" th:each="commande : ${commandes_client}">
                                 <td th:text="${commande.id}"></td>
                                 <td th:text="${commande.client.nom}"></td>
-                                <td th:text="${#dates.format(commande.dateCommade, 'dd/MM/yyyy')}"></td>
+                                <td th:text="${#dates.format(commande.dateCommande, 'dd/MM/yyyy')}"></td>
                                 <td th:text="${commande.montant}"></td>
                                 <td class="center hidden-phone">
+                                    <a th:href="@{/sorties/facture(id=${commande.id})}"><i class="far fa-file-pdf text-info"></i></a>
+                                </td>
+                                <td class="center hidden-phone">
                                     <a th:href="@{/sorties/details(id=${commande.id})}"><i class="fas fa-file-alt text-success"></i></a>
-                                    <span class="om-tab">|</span>
+                                </td>
+                                <td class="center hidden-phone">
                                     <a th:href="@{/sorties/update(id=${commande.id})}"><i class="fas fa-edit text-primary"></i></a>
                                     <span class="om-tab">|</span>
                                     <a class="btn_supp" th:href="@{/sorties/delete(id=${commande.id})}"><i class="fas fa-trash-alt text-danger"></i></a>
