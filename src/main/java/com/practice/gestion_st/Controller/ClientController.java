@@ -3,6 +3,7 @@ package com.practice.gestion_st.Controller;
 import com.practice.gestion_st.Entity.Client;
 import com.practice.gestion_st.Service.Imp.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.SpringVersion;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,7 @@ public class ClientController {
 	@GetMapping("")
 	public String clients(Model model) {
 		model.addAttribute("clients", clientService.findAll());
+		System.out.println("version: " + SpringVersion.getVersion());
 		return "clients/clients";
 	}
 

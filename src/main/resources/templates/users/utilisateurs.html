@@ -1,5 +1,9 @@
 <!doctype html>
-<html class="fixed" lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layouts/default">
+<html class="fixed" lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layouts/default"
+      >
 
 <body>
     <div id="page" layout:fragment="content">
@@ -11,45 +15,27 @@
             <!-- start: page -->
 
             <!-- Table -->
-            <section class="panel">
+            <section class="panel" >
                 <div class="panel-body">
-                    <a class="btn btn-success" href="utilisateurs/save" ><i class="fas fa-plus-circle"></i> Ajouter</a>
+                    <a class="btn btn-success" th:href="@{/utilisateurs/user_form}" ><i class="fas fa-plus-circle"></i> Ajouter</a>
                     <hr>
                     <table #dataTable class="table table-bordered table-striped mb-none" id="datatable-default">
                         <thead>
                             <tr>
-                                <th>Nom Prenom</th>
-                                <th>Image</th>
+                                <th>Nom</th>
                                 <th>Telephone</th>
-                                <th>Adresse</th>
                                 <th>Email</th>
-                                <th>Mot de passe</th>
                                 <th class="center hidden-phone">Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody th:each="user :${users}">
                             <tr class="gradeX">
-                                <td>Mohamed Ali</td>
-                                <td></td>
-                                <td>0654782168</td>
-                                <td>Hay Karima Casablanca</td>
-                                <td>Mohamed@gmil.com</td>
-                                <td class="passeword">123456</td>
+                                <td th:text="${user.nom}">Omar El Alaoui</td>
+                                <td th:text="${user.telephone}">0654782168</td>
+                                <td th:text="${user.username}">Mohamed@gmil.com</td>
                                 <td class="center hidden-phone">
                                     <i class="fas fa-edit text-primary"></i>
-                                    <span class="om-tab">/</span>
-                                    <i class="fas fa-trash-alt text-danger"></i></td>
-                            </tr>
-                            <tr class="gradeX">
-                                <td>Omar El Alaoui</td>
-                                <td></td>
-                                <td>0654782168</td>
-                                <td>Hay Salam Agadir</td>
-                                <td>Mohamed@gmil.com</td>
-                                <td class="passeword">123456</td>
-                                <td class="center hidden-phone">
-                                    <i class="fas fa-edit text-primary"></i>
-                                    <span class="om-tab">/</span>
+                                    <span class="om-tab">|</span>
                                     <i class="fas fa-trash-alt text-danger"></i></td>
                             </tr>
                         </tbody>

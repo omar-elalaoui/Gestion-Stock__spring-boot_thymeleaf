@@ -13,6 +13,8 @@ public class User {
     @Id
     private String username;
     private String pwd;
+    private String nom;
+    private String telephone;
     private boolean active;
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(

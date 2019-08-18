@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.springframework.org/schema/mvc" xmlns:layout="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.springframework.org/schema/mvc"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
 
@@ -90,7 +92,7 @@
                                 <a role="menuitem" tabindex="-1" href="#" data-lock-screen="true"><i class="fa fa-lock"></i> Lock Screen</a>
                             </li>
                             <li>
-                                <a role="menuitem" tabindex="-1" th:href="@{login?logout}"><i class="fa fa-power-off"></i> Logout</a>
+                                <a role="menuitem" tabindex="-1" th:href="@{/login?logout}"><i class="fa fa-power-off"></i> Logout</a>
                             </li>
                         </ul>
                     </div>
@@ -147,43 +149,33 @@
                                         <span>Produit</span>
                                     </a>
                                 </li>
-                                <li th:classappend="${#httpServletRequest.getRequestURI().startsWith('/entrees') ? 'nav-active':''}">
+                                <li sec:authorize="hasRole('ADMIN')"
+                                    th:classappend="${#httpServletRequest.getRequestURI().startsWith('/entrees') ? 'nav-active':''}">
                                     <a th:href="@{/entrees}">
                                         <i class="fas fa-cart-arrow-down"></i>
                                         <span>Entree</span>
                                     </a>
                                 </li>
-                                <li th:classappend="${#httpServletRequest.getRequestURI().startsWith('/sorties') ? 'nav-active':''}">
+                                <li sec:authorize="hasRole('ADMIN')"
+                                    th:classappend="${#httpServletRequest.getRequestURI().startsWith('/sorties') ? 'nav-active':''}">
                                     <a th:href="@{/sorties}">
                                         <i class="fas fa-dolly"></i>
                                         <span>Sortie</span>
                                     </a>
                                 </li>
-<!--                                <li th:classappend="${#httpServletRequest.getRequestURI().startsWith('/facture_achat') ? 'nav-active':''}">-->
-<!--                                    <a th:href="@{/facture_achat}">-->
-<!--                                        <i class="fas fa-file-invoice"></i>-->
-<!--                                        <span>Facture d'Achat</span>-->
-<!--                                    </a>-->
-<!--                                </li>-->
-<!--                                <li th:classappend="${#httpServletRequest.getRequestURI().startsWith('/facture_vente') ? 'nav-active':''}">-->
-<!--                                    <a th:href="@{/facture_vente}">-->
-<!--                                        <i class="fas fa-file-invoice-dollar"></i>-->
-<!--                                        <span>Facture de vente</span>-->
-<!--                                    </a>-->
-<!--                                </li>-->
                                 <li th:classappend="${#httpServletRequest.getRequestURI().startsWith('/journal') ? 'nav-active':''}">
                                     <a th:href="@{/journal}">
                                         <i class="fas fa-scroll"></i>
                                         <span>Journal</span>
                                     </a>
                                 </li>
-                                <li th:classappend="${#httpServletRequest.getRequestURI().startsWith('/utilisateurs') ? 'nav-active':''}">
+                                <li sec:authorize="hasRole('ADMIN')"
+                                    th:classappend="${#httpServletRequest.getRequestURI().startsWith('/utilisateurs') ? 'nav-active':''}">
                                     <a th:href="@{/utilisateurs}">
                                         <i class="fas fa-user-tie"></i>
                                         <span>Utilisateurs</span>
                                     </a>
                                 </li>
-
                             </ul>
                         </nav>
 
