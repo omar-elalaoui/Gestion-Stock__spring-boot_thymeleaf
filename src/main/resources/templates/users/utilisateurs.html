@@ -34,15 +34,30 @@
                                 <td th:text="${user.telephone}">0654782168</td>
                                 <td th:text="${user.username}">Mohamed@gmil.com</td>
                                 <td class="center hidden-phone">
-                                    <i class="fas fa-edit text-primary"></i>
                                     <span class="om-tab">|</span>
-                                    <i class="fas fa-trash-alt text-danger"></i></td>
+                                    <a class="btn_supp" th:href="@{/utilisateurs/delete(user=${user.username})}" ><i class="fas fa-trash-alt text-danger"></i></a>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </section>
 
+            <!-- Modal Supprimer-->
+            <div class="modal fade" id="supp_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Vous êtes Sur de supprimer cet utilisateur ?</h4>
+                        </div>
+                        <div class="modal-footer">
+                            <a class="btn btn-danger submit_supp"><i class="fas fa-trash-alt"></i> Supprimer</a>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fas fa-close text-danger"></i>Fermer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end: page -->
 
             <!-- end: page -->
         </section>

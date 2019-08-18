@@ -41,6 +41,19 @@ public class UserController {
 		return "users/utilisateurs_save";
 	}
 	
+	@GetMapping("/form_update")
+	public String form_update(String user, Model model) {
+		
+		return "users/utilisateurs_save";
+	}
+	
+	@GetMapping("/delete")
+	public String delete(String user, Model model) {
+		userService.deleteById(user);
+		//userService.deleteRoleRelationship(user);
+		return "redirect:/utilisateurs";
+	}
+	
 	
 	@PostMapping("/save")
 	public String utilisateurs_save(User user, Model model) {
